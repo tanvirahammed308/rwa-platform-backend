@@ -46,3 +46,8 @@ export { Prisma }
  * 
  */
 export type Asset = Prisma.AssetModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
