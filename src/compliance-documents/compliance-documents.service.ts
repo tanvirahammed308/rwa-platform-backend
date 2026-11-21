@@ -14,6 +14,7 @@ export class ComplianceDocumentsService {
   constructor(private prisma: PrismaService) {}
 
 
+
 async create(
   complianceCaseId: string,
   uploadedById: string,
@@ -21,7 +22,6 @@ async create(
   dto: {
     documentType: string;
     fileName: string;
-    fileUrl: string;
     mimeType?: string;
     fileSize?: number;
   },
@@ -53,21 +53,21 @@ async create(
     );
   }
 
-  // Step 4: Only pending cases accept new documents
+  // Step 4: Only pending cases accept documents
   if (complianceCase.status !== 'PENDING') {
     throw new BadRequestException(
       'Documents can only be uploaded to pending compliance cases',
     );
   }
 
-  // Step 5: Create document
+  // Step 5: Create metadata-only document
   const document = await this.prisma.complianceDocument.create({
     data: {
       complianceCaseId,
       uploadedById,
       documentType: dto.documentType,
       fileName: dto.fileName,
-      fileUrl: dto.fileUrl,
+      fileUrl: null,
       mimeType: dto.mimeType,
       fileSize: dto.fileSize,
     },

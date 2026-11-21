@@ -122,7 +122,7 @@ model ComplianceDocument {
 
   documentType String
   fileName     String
-  fileUrl      String
+  fileUrl      String?
   mimeType     String?
   fileSize     Int?
 

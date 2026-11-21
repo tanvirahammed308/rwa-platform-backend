@@ -3,7 +3,6 @@ import {
   IsString,
   IsNotEmpty,
   IsOptional,
-  IsNumber,
   IsInt,
   Min,
 } from 'class-validator';
@@ -16,10 +15,6 @@ export class CreateComplianceDocumentDto {
   @IsString()
   @IsNotEmpty()
   fileName: string;
-
-  @IsString()
-  @IsNotEmpty()
-  fileUrl: string;
 
   @IsOptional()
   @IsString()

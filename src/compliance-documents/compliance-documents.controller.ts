@@ -175,43 +175,50 @@ export class ComplianceDocumentsController {
   }
 
   
-  @Get(':documentId/download')
-  async downloadDocument(
-    @Param('documentId') documentId: string,
-    @Req() req: AuthenticatedRequest,
-    @Res() res: Response,
-  ) {
-    const document =
-      await this.complianceDocumentsService.getDownloadInfo(
-        documentId,
-        req.user.userId,
-        req.user.role,
-      );
 
-    // Only allow files stored inside the uploads directory
-    const storedPath = document.fileUrl;
-    const fileName = basename(storedPath);
+@Get(':documentId/download')
+async downloadDocument(
+  @Param('documentId') documentId: string,
+  @Req() req: AuthenticatedRequest,
+  @Res() res: Response,
+) {
+  const document =
+    await this.complianceDocumentsService.getDownloadInfo(
+      documentId,
+      req.user.userId,
+      req.user.role,
+    );
 
-    // Reject invalid or potentially malicious paths
-    if (
-      !storedPath.startsWith('/uploads/') ||
-      storedPath.includes('\\') ||
-      !fileName ||
-      storedPath !== `/uploads/${fileName}`
-    ) {
-      throw new BadRequestException('Invalid document file path');
-    }
-
-    // Build an absolute path inside the uploads directory
-    const uploadsDirectory = resolve(process.cwd(), 'uploads');
-    const filePath = resolve(uploadsDirectory, fileName);
-
-    // Confirm that the file exists
-    if (!existsSync(filePath)) {
-      throw new NotFoundException('Physical file not found');
-    }
-
-    return res.download(filePath, document.fileName);
+  // Reject metadata-only documents
+  if (!document.fileUrl) {
+    throw new NotFoundException(
+      'No physical file is associated with this document',
+    );
   }
+
+  const storedPath = document.fileUrl;
+  const fileName = basename(storedPath);
+
+  // Validate the stored path
+  if (
+    !storedPath.startsWith('/uploads/') ||
+    storedPath.includes('\\') ||
+    !fileName ||
+    storedPath !== `/uploads/${fileName}`
+  ) {
+    throw new BadRequestException('Invalid document file path');
+  }
+
+  // Resolve the file inside uploads directory
+  const uploadsDirectory = resolve(process.cwd(), 'uploads');
+  const filePath = resolve(uploadsDirectory, fileName);
+
+  if (!existsSync(filePath)) {
+    throw new NotFoundException('Physical file not found');
+  }
+
+  return res.download(filePath, document.fileName);
+}
+
 
 }

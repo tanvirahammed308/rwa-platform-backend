@@ -240,7 +240,7 @@ export type ComplianceDocumentGroupByOutputType = {
   reviewerId: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl: string | null
   mimeType: string | null
   fileSize: number | null
   status: string
@@ -280,7 +280,7 @@ export type ComplianceDocumentWhereInput = {
   reviewerId?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   documentType?: Prisma.StringFilter<"ComplianceDocument"> | string
   fileName?: Prisma.StringFilter<"ComplianceDocument"> | string
-  fileUrl?: Prisma.StringFilter<"ComplianceDocument"> | string
+  fileUrl?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   mimeType?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   fileSize?: Prisma.IntNullableFilter<"ComplianceDocument"> | number | null
   status?: Prisma.StringFilter<"ComplianceDocument"> | string
@@ -301,7 +301,7 @@ export type ComplianceDocumentOrderByWithRelationInput = {
   reviewerId?: Prisma.SortOrderInput | Prisma.SortOrder
   documentType?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
-  fileUrl?: Prisma.SortOrder
+  fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   mimeType?: Prisma.SortOrderInput | Prisma.SortOrder
   fileSize?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -325,7 +325,7 @@ export type ComplianceDocumentWhereUniqueInput = Prisma.AtLeast<{
   reviewerId?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   documentType?: Prisma.StringFilter<"ComplianceDocument"> | string
   fileName?: Prisma.StringFilter<"ComplianceDocument"> | string
-  fileUrl?: Prisma.StringFilter<"ComplianceDocument"> | string
+  fileUrl?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   mimeType?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   fileSize?: Prisma.IntNullableFilter<"ComplianceDocument"> | number | null
   status?: Prisma.StringFilter<"ComplianceDocument"> | string
@@ -346,7 +346,7 @@ export type ComplianceDocumentOrderByWithAggregationInput = {
   reviewerId?: Prisma.SortOrderInput | Prisma.SortOrder
   documentType?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
-  fileUrl?: Prisma.SortOrder
+  fileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   mimeType?: Prisma.SortOrderInput | Prisma.SortOrder
   fileSize?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -371,7 +371,7 @@ export type ComplianceDocumentScalarWhereWithAggregatesInput = {
   reviewerId?: Prisma.StringNullableWithAggregatesFilter<"ComplianceDocument"> | string | null
   documentType?: Prisma.StringWithAggregatesFilter<"ComplianceDocument"> | string
   fileName?: Prisma.StringWithAggregatesFilter<"ComplianceDocument"> | string
-  fileUrl?: Prisma.StringWithAggregatesFilter<"ComplianceDocument"> | string
+  fileUrl?: Prisma.StringNullableWithAggregatesFilter<"ComplianceDocument"> | string | null
   mimeType?: Prisma.StringNullableWithAggregatesFilter<"ComplianceDocument"> | string | null
   fileSize?: Prisma.IntNullableWithAggregatesFilter<"ComplianceDocument"> | number | null
   status?: Prisma.StringWithAggregatesFilter<"ComplianceDocument"> | string
@@ -385,7 +385,7 @@ export type ComplianceDocumentCreateInput = {
   id?: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -406,7 +406,7 @@ export type ComplianceDocumentUncheckedCreateInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -421,7 +421,7 @@ export type ComplianceDocumentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -442,7 +442,7 @@ export type ComplianceDocumentUncheckedUpdateInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -460,7 +460,7 @@ export type ComplianceDocumentCreateManyInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -474,7 +474,7 @@ export type ComplianceDocumentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -491,7 +491,7 @@ export type ComplianceDocumentUncheckedUpdateManyInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -727,7 +727,7 @@ export type ComplianceDocumentCreateWithoutUploadedByInput = {
   id?: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -746,7 +746,7 @@ export type ComplianceDocumentUncheckedCreateWithoutUploadedByInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -771,7 +771,7 @@ export type ComplianceDocumentCreateWithoutReviewerInput = {
   id?: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -790,7 +790,7 @@ export type ComplianceDocumentUncheckedCreateWithoutReviewerInput = {
   uploadedById: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -837,7 +837,7 @@ export type ComplianceDocumentScalarWhereInput = {
   reviewerId?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   documentType?: Prisma.StringFilter<"ComplianceDocument"> | string
   fileName?: Prisma.StringFilter<"ComplianceDocument"> | string
-  fileUrl?: Prisma.StringFilter<"ComplianceDocument"> | string
+  fileUrl?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   mimeType?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   fileSize?: Prisma.IntNullableFilter<"ComplianceDocument"> | number | null
   status?: Prisma.StringFilter<"ComplianceDocument"> | string
@@ -867,7 +867,7 @@ export type ComplianceDocumentCreateWithoutComplianceCaseInput = {
   id?: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -886,7 +886,7 @@ export type ComplianceDocumentUncheckedCreateWithoutComplianceCaseInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -927,7 +927,7 @@ export type ComplianceDocumentCreateWithoutAuditLogsInput = {
   id?: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -947,7 +947,7 @@ export type ComplianceDocumentUncheckedCreateWithoutAuditLogsInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -977,7 +977,7 @@ export type ComplianceDocumentUpdateWithoutAuditLogsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -997,7 +997,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutAuditLogsInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1013,7 +1013,7 @@ export type ComplianceDocumentCreateManyUploadedByInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -1029,7 +1029,7 @@ export type ComplianceDocumentCreateManyReviewerInput = {
   uploadedById: string
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -1043,7 +1043,7 @@ export type ComplianceDocumentUpdateWithoutUploadedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1062,7 +1062,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutUploadedByInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1079,7 +1079,7 @@ export type ComplianceDocumentUncheckedUpdateManyWithoutUploadedByInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1093,7 +1093,7 @@ export type ComplianceDocumentUpdateWithoutReviewerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1112,7 +1112,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutReviewerInput = {
   uploadedById?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1129,7 +1129,7 @@ export type ComplianceDocumentUncheckedUpdateManyWithoutReviewerInput = {
   uploadedById?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1145,7 +1145,7 @@ export type ComplianceDocumentCreateManyComplianceCaseInput = {
   reviewerId?: string | null
   documentType: string
   fileName: string
-  fileUrl: string
+  fileUrl?: string | null
   mimeType?: string | null
   fileSize?: number | null
   status?: string
@@ -1159,7 +1159,7 @@ export type ComplianceDocumentUpdateWithoutComplianceCaseInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1178,7 +1178,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutComplianceCaseInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1195,7 +1195,7 @@ export type ComplianceDocumentUncheckedUpdateManyWithoutComplianceCaseInput = {
   reviewerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentType?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  fileUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  fileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1349,7 +1349,7 @@ export type $ComplianceDocumentPayload<ExtArgs extends runtime.Types.Extensions.
     reviewerId: string | null
     documentType: string
     fileName: string
-    fileUrl: string
+    fileUrl: string | null
     mimeType: string | null
     fileSize: number | null
     status: string
