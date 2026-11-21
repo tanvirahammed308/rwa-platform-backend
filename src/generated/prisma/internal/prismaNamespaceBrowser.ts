@@ -51,8 +51,13 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  User: 'User',
   Asset: 'Asset',
-  User: 'User'
+  AuditLog: 'AuditLog',
+  ComplianceCase: 'ComplianceCase',
+  ComplianceAuditLog: 'ComplianceAuditLog',
+  ComplianceDocument: 'ComplianceDocument',
+  ComplianceDocumentAuditLog: 'ComplianceDocumentAuditLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -71,21 +76,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const AssetScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  symbol: 'symbol',
-  assetType: 'assetType',
-  description: 'description',
-  totalSupply: 'totalSupply',
-  status: 'status',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type AssetScalarFieldEnum = (typeof AssetScalarFieldEnum)[keyof typeof AssetScalarFieldEnum]
-
-
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -99,12 +89,115 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const AssetScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  symbol: 'symbol',
+  assetType: 'assetType',
+  description: 'description',
+  totalSupply: 'totalSupply',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  ownerId: 'ownerId',
+  archivedAt: 'archivedAt'
+} as const
+
+export type AssetScalarFieldEnum = (typeof AssetScalarFieldEnum)[keyof typeof AssetScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  assetId: 'assetId',
+  userId: 'userId',
+  action: 'action',
+  oldStatus: 'oldStatus',
+  newStatus: 'newStatus',
+  changes: 'changes',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const ComplianceCaseScalarFieldEnum = {
+  id: 'id',
+  assetId: 'assetId',
+  submittedById: 'submittedById',
+  reviewerId: 'reviewerId',
+  status: 'status',
+  reason: 'reason',
+  reviewNotes: 'reviewNotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  reviewedAt: 'reviewedAt'
+} as const
+
+export type ComplianceCaseScalarFieldEnum = (typeof ComplianceCaseScalarFieldEnum)[keyof typeof ComplianceCaseScalarFieldEnum]
+
+
+export const ComplianceAuditLogScalarFieldEnum = {
+  id: 'id',
+  complianceCaseId: 'complianceCaseId',
+  userId: 'userId',
+  action: 'action',
+  oldStatus: 'oldStatus',
+  newStatus: 'newStatus',
+  reviewNotes: 'reviewNotes',
+  createdAt: 'createdAt'
+} as const
+
+export type ComplianceAuditLogScalarFieldEnum = (typeof ComplianceAuditLogScalarFieldEnum)[keyof typeof ComplianceAuditLogScalarFieldEnum]
+
+
+export const ComplianceDocumentScalarFieldEnum = {
+  id: 'id',
+  complianceCaseId: 'complianceCaseId',
+  uploadedById: 'uploadedById',
+  reviewerId: 'reviewerId',
+  documentType: 'documentType',
+  fileName: 'fileName',
+  fileUrl: 'fileUrl',
+  mimeType: 'mimeType',
+  fileSize: 'fileSize',
+  status: 'status',
+  reviewNotes: 'reviewNotes',
+  reviewedAt: 'reviewedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplianceDocumentScalarFieldEnum = (typeof ComplianceDocumentScalarFieldEnum)[keyof typeof ComplianceDocumentScalarFieldEnum]
+
+
+export const ComplianceDocumentAuditLogScalarFieldEnum = {
+  id: 'id',
+  documentId: 'documentId',
+  userId: 'userId',
+  action: 'action',
+  oldStatus: 'oldStatus',
+  newStatus: 'newStatus',
+  reviewNotes: 'reviewNotes',
+  createdAt: 'createdAt'
+} as const
+
+export type ComplianceDocumentAuditLogScalarFieldEnum = (typeof ComplianceDocumentAuditLogScalarFieldEnum)[keyof typeof ComplianceDocumentAuditLogScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -121,4 +214,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

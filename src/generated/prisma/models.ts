@@ -8,6 +8,11 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Asset.js'
 export type * from './models/User.js'
+export type * from './models/Asset.js'
+export type * from './models/AuditLog.js'
+export type * from './models/ComplianceCase.js'
+export type * from './models/ComplianceAuditLog.js'
+export type * from './models/ComplianceDocument.js'
+export type * from './models/ComplianceDocumentAuditLog.js'
 export type * from './commonInputTypes.js'

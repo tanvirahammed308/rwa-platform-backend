@@ -44,6 +44,8 @@ export type AssetMinAggregateOutputType = {
   status: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  ownerId: string | null
+  archivedAt: Date | null
 }
 
 export type AssetMaxAggregateOutputType = {
@@ -56,6 +58,8 @@ export type AssetMaxAggregateOutputType = {
   status: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  ownerId: string | null
+  archivedAt: Date | null
 }
 
 export type AssetCountAggregateOutputType = {
@@ -68,6 +72,8 @@ export type AssetCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  ownerId: number
+  archivedAt: number
   _all: number
 }
 
@@ -90,6 +96,8 @@ export type AssetMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  ownerId?: true
+  archivedAt?: true
 }
 
 export type AssetMaxAggregateInputType = {
@@ -102,6 +110,8 @@ export type AssetMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  ownerId?: true
+  archivedAt?: true
 }
 
 export type AssetCountAggregateInputType = {
@@ -114,6 +124,8 @@ export type AssetCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  ownerId?: true
+  archivedAt?: true
   _all?: true
 }
 
@@ -213,6 +225,8 @@ export type AssetGroupByOutputType = {
   status: string
   createdAt: Date
   updatedAt: Date
+  ownerId: string | null
+  archivedAt: Date | null
   _count: AssetCountAggregateOutputType | null
   _avg: AssetAvgAggregateOutputType | null
   _sum: AssetSumAggregateOutputType | null
@@ -248,6 +262,11 @@ export type AssetWhereInput = {
   status?: Prisma.StringFilter<"Asset"> | string
   createdAt?: Prisma.DateTimeFilter<"Asset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Asset"> | Date | string
+  ownerId?: Prisma.StringNullableFilter<"Asset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"Asset"> | Date | string | null
+  owner?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  complianceCases?: Prisma.ComplianceCaseListRelationFilter
 }
 
 export type AssetOrderByWithRelationInput = {
@@ -260,6 +279,11 @@ export type AssetOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  owner?: Prisma.UserOrderByWithRelationInput
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  complianceCases?: Prisma.ComplianceCaseOrderByRelationAggregateInput
 }
 
 export type AssetWhereUniqueInput = Prisma.AtLeast<{
@@ -275,6 +299,11 @@ export type AssetWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.StringFilter<"Asset"> | string
   createdAt?: Prisma.DateTimeFilter<"Asset"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Asset"> | Date | string
+  ownerId?: Prisma.StringNullableFilter<"Asset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"Asset"> | Date | string | null
+  owner?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  complianceCases?: Prisma.ComplianceCaseListRelationFilter
 }, "id" | "symbol">
 
 export type AssetOrderByWithAggregationInput = {
@@ -287,6 +316,8 @@ export type AssetOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AssetCountOrderByAggregateInput
   _avg?: Prisma.AssetAvgOrderByAggregateInput
   _max?: Prisma.AssetMaxOrderByAggregateInput
@@ -307,6 +338,8 @@ export type AssetScalarWhereWithAggregatesInput = {
   status?: Prisma.StringWithAggregatesFilter<"Asset"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Asset"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Asset"> | Date | string
+  ownerId?: Prisma.StringNullableWithAggregatesFilter<"Asset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Asset"> | Date | string | null
 }
 
 export type AssetCreateInput = {
@@ -319,6 +352,10 @@ export type AssetCreateInput = {
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  archivedAt?: Date | string | null
+  owner?: Prisma.UserCreateNestedOneWithoutAssetsInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutAssetInput
+  complianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutAssetInput
 }
 
 export type AssetUncheckedCreateInput = {
@@ -331,6 +368,10 @@ export type AssetUncheckedCreateInput = {
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  ownerId?: string | null
+  archivedAt?: Date | string | null
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutAssetInput
+  complianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutAssetInput
 }
 
 export type AssetUpdateInput = {
@@ -343,6 +384,10 @@ export type AssetUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  owner?: Prisma.UserUpdateOneWithoutAssetsNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutAssetNestedInput
+  complianceCases?: Prisma.ComplianceCaseUpdateManyWithoutAssetNestedInput
 }
 
 export type AssetUncheckedUpdateInput = {
@@ -355,6 +400,10 @@ export type AssetUncheckedUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutAssetNestedInput
+  complianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutAssetNestedInput
 }
 
 export type AssetCreateManyInput = {
@@ -367,6 +416,8 @@ export type AssetCreateManyInput = {
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  ownerId?: string | null
+  archivedAt?: Date | string | null
 }
 
 export type AssetUpdateManyMutationInput = {
@@ -379,6 +430,7 @@ export type AssetUpdateManyMutationInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type AssetUncheckedUpdateManyInput = {
@@ -391,6 +443,18 @@ export type AssetUncheckedUpdateManyInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type AssetListRelationFilter = {
+  every?: Prisma.AssetWhereInput
+  some?: Prisma.AssetWhereInput
+  none?: Prisma.AssetWhereInput
+}
+
+export type AssetOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type AssetCountOrderByAggregateInput = {
@@ -403,6 +467,8 @@ export type AssetCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
 }
 
 export type AssetAvgOrderByAggregateInput = {
@@ -419,6 +485,8 @@ export type AssetMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
 }
 
 export type AssetMinOrderByAggregateInput = {
@@ -431,14 +499,59 @@ export type AssetMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  ownerId?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
 }
 
 export type AssetSumOrderByAggregateInput = {
   totalSupply?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type AssetScalarRelationFilter = {
+  is?: Prisma.AssetWhereInput
+  isNot?: Prisma.AssetWhereInput
+}
+
+export type AssetCreateNestedManyWithoutOwnerInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutOwnerInput, Prisma.AssetUncheckedCreateWithoutOwnerInput> | Prisma.AssetCreateWithoutOwnerInput[] | Prisma.AssetUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutOwnerInput | Prisma.AssetCreateOrConnectWithoutOwnerInput[]
+  createMany?: Prisma.AssetCreateManyOwnerInputEnvelope
+  connect?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+}
+
+export type AssetUncheckedCreateNestedManyWithoutOwnerInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutOwnerInput, Prisma.AssetUncheckedCreateWithoutOwnerInput> | Prisma.AssetCreateWithoutOwnerInput[] | Prisma.AssetUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutOwnerInput | Prisma.AssetCreateOrConnectWithoutOwnerInput[]
+  createMany?: Prisma.AssetCreateManyOwnerInputEnvelope
+  connect?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+}
+
+export type AssetUpdateManyWithoutOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutOwnerInput, Prisma.AssetUncheckedCreateWithoutOwnerInput> | Prisma.AssetCreateWithoutOwnerInput[] | Prisma.AssetUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutOwnerInput | Prisma.AssetCreateOrConnectWithoutOwnerInput[]
+  upsert?: Prisma.AssetUpsertWithWhereUniqueWithoutOwnerInput | Prisma.AssetUpsertWithWhereUniqueWithoutOwnerInput[]
+  createMany?: Prisma.AssetCreateManyOwnerInputEnvelope
+  set?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  disconnect?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  delete?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  connect?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  update?: Prisma.AssetUpdateWithWhereUniqueWithoutOwnerInput | Prisma.AssetUpdateWithWhereUniqueWithoutOwnerInput[]
+  updateMany?: Prisma.AssetUpdateManyWithWhereWithoutOwnerInput | Prisma.AssetUpdateManyWithWhereWithoutOwnerInput[]
+  deleteMany?: Prisma.AssetScalarWhereInput | Prisma.AssetScalarWhereInput[]
+}
+
+export type AssetUncheckedUpdateManyWithoutOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutOwnerInput, Prisma.AssetUncheckedCreateWithoutOwnerInput> | Prisma.AssetCreateWithoutOwnerInput[] | Prisma.AssetUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutOwnerInput | Prisma.AssetCreateOrConnectWithoutOwnerInput[]
+  upsert?: Prisma.AssetUpsertWithWhereUniqueWithoutOwnerInput | Prisma.AssetUpsertWithWhereUniqueWithoutOwnerInput[]
+  createMany?: Prisma.AssetCreateManyOwnerInputEnvelope
+  set?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  disconnect?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  delete?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  connect?: Prisma.AssetWhereUniqueInput | Prisma.AssetWhereUniqueInput[]
+  update?: Prisma.AssetUpdateWithWhereUniqueWithoutOwnerInput | Prisma.AssetUpdateWithWhereUniqueWithoutOwnerInput[]
+  updateMany?: Prisma.AssetUpdateManyWithWhereWithoutOwnerInput | Prisma.AssetUpdateManyWithWhereWithoutOwnerInput[]
+  deleteMany?: Prisma.AssetScalarWhereInput | Prisma.AssetScalarWhereInput[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -453,10 +566,357 @@ export type DecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
+export type AssetCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutAuditLogsInput, Prisma.AssetUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.AssetWhereUniqueInput
+}
+
+export type AssetUpdateOneRequiredWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutAuditLogsInput, Prisma.AssetUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.AssetUpsertWithoutAuditLogsInput
+  connect?: Prisma.AssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AssetUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.AssetUpdateWithoutAuditLogsInput>, Prisma.AssetUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type AssetCreateNestedOneWithoutComplianceCasesInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutComplianceCasesInput, Prisma.AssetUncheckedCreateWithoutComplianceCasesInput>
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutComplianceCasesInput
+  connect?: Prisma.AssetWhereUniqueInput
+}
+
+export type AssetUpdateOneRequiredWithoutComplianceCasesNestedInput = {
+  create?: Prisma.XOR<Prisma.AssetCreateWithoutComplianceCasesInput, Prisma.AssetUncheckedCreateWithoutComplianceCasesInput>
+  connectOrCreate?: Prisma.AssetCreateOrConnectWithoutComplianceCasesInput
+  upsert?: Prisma.AssetUpsertWithoutComplianceCasesInput
+  connect?: Prisma.AssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AssetUpdateToOneWithWhereWithoutComplianceCasesInput, Prisma.AssetUpdateWithoutComplianceCasesInput>, Prisma.AssetUncheckedUpdateWithoutComplianceCasesInput>
+}
+
+export type AssetCreateWithoutOwnerInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  archivedAt?: Date | string | null
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutAssetInput
+  complianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutAssetInput
+}
+
+export type AssetUncheckedCreateWithoutOwnerInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  archivedAt?: Date | string | null
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutAssetInput
+  complianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutAssetInput
+}
+
+export type AssetCreateOrConnectWithoutOwnerInput = {
+  where: Prisma.AssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.AssetCreateWithoutOwnerInput, Prisma.AssetUncheckedCreateWithoutOwnerInput>
+}
+
+export type AssetCreateManyOwnerInputEnvelope = {
+  data: Prisma.AssetCreateManyOwnerInput | Prisma.AssetCreateManyOwnerInput[]
+  skipDuplicates?: boolean
+}
+
+export type AssetUpsertWithWhereUniqueWithoutOwnerInput = {
+  where: Prisma.AssetWhereUniqueInput
+  update: Prisma.XOR<Prisma.AssetUpdateWithoutOwnerInput, Prisma.AssetUncheckedUpdateWithoutOwnerInput>
+  create: Prisma.XOR<Prisma.AssetCreateWithoutOwnerInput, Prisma.AssetUncheckedCreateWithoutOwnerInput>
+}
+
+export type AssetUpdateWithWhereUniqueWithoutOwnerInput = {
+  where: Prisma.AssetWhereUniqueInput
+  data: Prisma.XOR<Prisma.AssetUpdateWithoutOwnerInput, Prisma.AssetUncheckedUpdateWithoutOwnerInput>
+}
+
+export type AssetUpdateManyWithWhereWithoutOwnerInput = {
+  where: Prisma.AssetScalarWhereInput
+  data: Prisma.XOR<Prisma.AssetUpdateManyMutationInput, Prisma.AssetUncheckedUpdateManyWithoutOwnerInput>
+}
+
+export type AssetScalarWhereInput = {
+  AND?: Prisma.AssetScalarWhereInput | Prisma.AssetScalarWhereInput[]
+  OR?: Prisma.AssetScalarWhereInput[]
+  NOT?: Prisma.AssetScalarWhereInput | Prisma.AssetScalarWhereInput[]
+  id?: Prisma.StringFilter<"Asset"> | string
+  name?: Prisma.StringFilter<"Asset"> | string
+  symbol?: Prisma.StringFilter<"Asset"> | string
+  assetType?: Prisma.StringFilter<"Asset"> | string
+  description?: Prisma.StringNullableFilter<"Asset"> | string | null
+  totalSupply?: Prisma.DecimalFilter<"Asset"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFilter<"Asset"> | string
+  createdAt?: Prisma.DateTimeFilter<"Asset"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Asset"> | Date | string
+  ownerId?: Prisma.StringNullableFilter<"Asset"> | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"Asset"> | Date | string | null
+}
+
+export type AssetCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  archivedAt?: Date | string | null
+  owner?: Prisma.UserCreateNestedOneWithoutAssetsInput
+  complianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutAssetInput
+}
+
+export type AssetUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  ownerId?: string | null
+  archivedAt?: Date | string | null
+  complianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutAssetInput
+}
+
+export type AssetCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.AssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.AssetCreateWithoutAuditLogsInput, Prisma.AssetUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type AssetUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.AssetUpdateWithoutAuditLogsInput, Prisma.AssetUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.AssetCreateWithoutAuditLogsInput, Prisma.AssetUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.AssetWhereInput
+}
+
+export type AssetUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.AssetWhereInput
+  data: Prisma.XOR<Prisma.AssetUpdateWithoutAuditLogsInput, Prisma.AssetUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type AssetUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  owner?: Prisma.UserUpdateOneWithoutAssetsNestedInput
+  complianceCases?: Prisma.ComplianceCaseUpdateManyWithoutAssetNestedInput
+}
+
+export type AssetUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  complianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutAssetNestedInput
+}
+
+export type AssetCreateWithoutComplianceCasesInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  archivedAt?: Date | string | null
+  owner?: Prisma.UserCreateNestedOneWithoutAssetsInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutAssetInput
+}
+
+export type AssetUncheckedCreateWithoutComplianceCasesInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  ownerId?: string | null
+  archivedAt?: Date | string | null
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutAssetInput
+}
+
+export type AssetCreateOrConnectWithoutComplianceCasesInput = {
+  where: Prisma.AssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.AssetCreateWithoutComplianceCasesInput, Prisma.AssetUncheckedCreateWithoutComplianceCasesInput>
+}
+
+export type AssetUpsertWithoutComplianceCasesInput = {
+  update: Prisma.XOR<Prisma.AssetUpdateWithoutComplianceCasesInput, Prisma.AssetUncheckedUpdateWithoutComplianceCasesInput>
+  create: Prisma.XOR<Prisma.AssetCreateWithoutComplianceCasesInput, Prisma.AssetUncheckedCreateWithoutComplianceCasesInput>
+  where?: Prisma.AssetWhereInput
+}
+
+export type AssetUpdateToOneWithWhereWithoutComplianceCasesInput = {
+  where?: Prisma.AssetWhereInput
+  data: Prisma.XOR<Prisma.AssetUpdateWithoutComplianceCasesInput, Prisma.AssetUncheckedUpdateWithoutComplianceCasesInput>
+}
+
+export type AssetUpdateWithoutComplianceCasesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  owner?: Prisma.UserUpdateOneWithoutAssetsNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutAssetNestedInput
+}
+
+export type AssetUncheckedUpdateWithoutComplianceCasesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ownerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutAssetNestedInput
+}
+
+export type AssetCreateManyOwnerInput = {
+  id?: string
+  name: string
+  symbol: string
+  assetType: string
+  description?: string | null
+  totalSupply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  archivedAt?: Date | string | null
+}
+
+export type AssetUpdateWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutAssetNestedInput
+  complianceCases?: Prisma.ComplianceCaseUpdateManyWithoutAssetNestedInput
+}
+
+export type AssetUncheckedUpdateWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutAssetNestedInput
+  complianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutAssetNestedInput
+}
+
+export type AssetUncheckedUpdateManyWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  symbol?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalSupply?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+
+/**
+ * Count Type AssetCountOutputType
+ */
+
+export type AssetCountOutputType = {
+  auditLogs: number
+  complianceCases: number
+}
+
+export type AssetCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | AssetCountOutputTypeCountAuditLogsArgs
+  complianceCases?: boolean | AssetCountOutputTypeCountComplianceCasesArgs
+}
+
+/**
+ * AssetCountOutputType without action
+ */
+export type AssetCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AssetCountOutputType
+   */
+  select?: Prisma.AssetCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * AssetCountOutputType without action
+ */
+export type AssetCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * AssetCountOutputType without action
+ */
+export type AssetCountOutputTypeCountComplianceCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceCaseWhereInput
+}
 
 
 export type AssetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -469,6 +929,12 @@ export type AssetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  ownerId?: boolean
+  archivedAt?: boolean
+  owner?: boolean | Prisma.Asset$ownerArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Asset$auditLogsArgs<ExtArgs>
+  complianceCases?: boolean | Prisma.Asset$complianceCasesArgs<ExtArgs>
+  _count?: boolean | Prisma.AssetCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["asset"]>
 
 export type AssetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -481,6 +947,9 @@ export type AssetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  ownerId?: boolean
+  archivedAt?: boolean
+  owner?: boolean | Prisma.Asset$ownerArgs<ExtArgs>
 }, ExtArgs["result"]["asset"]>
 
 export type AssetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -493,6 +962,9 @@ export type AssetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  ownerId?: boolean
+  archivedAt?: boolean
+  owner?: boolean | Prisma.Asset$ownerArgs<ExtArgs>
 }, ExtArgs["result"]["asset"]>
 
 export type AssetSelectScalar = {
@@ -505,13 +977,31 @@ export type AssetSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  ownerId?: boolean
+  archivedAt?: boolean
 }
 
-export type AssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "symbol" | "assetType" | "description" | "totalSupply" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["asset"]>
+export type AssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "symbol" | "assetType" | "description" | "totalSupply" | "status" | "createdAt" | "updatedAt" | "ownerId" | "archivedAt", ExtArgs["result"]["asset"]>
+export type AssetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  owner?: boolean | Prisma.Asset$ownerArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Asset$auditLogsArgs<ExtArgs>
+  complianceCases?: boolean | Prisma.Asset$complianceCasesArgs<ExtArgs>
+  _count?: boolean | Prisma.AssetCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type AssetIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  owner?: boolean | Prisma.Asset$ownerArgs<ExtArgs>
+}
+export type AssetIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  owner?: boolean | Prisma.Asset$ownerArgs<ExtArgs>
+}
 
 export type $AssetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Asset"
-  objects: {}
+  objects: {
+    owner: Prisma.$UserPayload<ExtArgs> | null
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    complianceCases: Prisma.$ComplianceCasePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -522,6 +1012,8 @@ export type $AssetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     status: string
     createdAt: Date
     updatedAt: Date
+    ownerId: string | null
+    archivedAt: Date | null
   }, ExtArgs["result"]["asset"]>
   composites: {}
 }
@@ -916,6 +1408,9 @@ readonly fields: AssetFieldRefs;
  */
 export interface Prisma__AssetClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  owner<T extends Prisma.Asset$ownerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Asset$ownerArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  auditLogs<T extends Prisma.Asset$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Asset$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complianceCases<T extends Prisma.Asset$complianceCasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Asset$complianceCasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceCasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -954,6 +1449,8 @@ export interface AssetFieldRefs {
   readonly status: Prisma.FieldRef<"Asset", 'String'>
   readonly createdAt: Prisma.FieldRef<"Asset", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Asset", 'DateTime'>
+  readonly ownerId: Prisma.FieldRef<"Asset", 'String'>
+  readonly archivedAt: Prisma.FieldRef<"Asset", 'DateTime'>
 }
     
 
@@ -970,6 +1467,10 @@ export type AssetFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Asset
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
   /**
    * Filter, which Asset to fetch.
    */
@@ -989,6 +1490,10 @@ export type AssetFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
+  /**
    * Filter, which Asset to fetch.
    */
   where: Prisma.AssetWhereUniqueInput
@@ -1006,6 +1511,10 @@ export type AssetFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Asset
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
   /**
    * Filter, which Asset to fetch.
    */
@@ -1055,6 +1564,10 @@ export type AssetFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
+  /**
    * Filter, which Asset to fetch.
    */
   where?: Prisma.AssetWhereInput
@@ -1102,6 +1615,10 @@ export type AssetFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Asset
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
   /**
    * Filter, which Assets to fetch.
    */
@@ -1151,6 +1668,10 @@ export type AssetCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
+  /**
    * The data needed to create a Asset.
    */
   data: Prisma.XOR<Prisma.AssetCreateInput, Prisma.AssetUncheckedCreateInput>
@@ -1184,6 +1705,10 @@ export type AssetCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.AssetCreateManyInput | Prisma.AssetCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1198,6 +1723,10 @@ export type AssetUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Asset
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
   /**
    * The data needed to update a Asset.
    */
@@ -1250,6 +1779,10 @@ export type AssetUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Assets to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1264,6 +1797,10 @@ export type AssetUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Asset
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
   /**
    * The filter to search for the Asset to update in case it exists.
    */
@@ -1291,6 +1828,10 @@ export type AssetDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
+  /**
    * Filter which Asset to delete.
    */
   where: Prisma.AssetWhereUniqueInput
@@ -1311,6 +1852,73 @@ export type AssetDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Asset.owner
+ */
+export type Asset$ownerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * Asset.auditLogs
+ */
+export type Asset$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Asset.complianceCases
+ */
+export type Asset$complianceCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceCase
+   */
+  select?: Prisma.ComplianceCaseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceCase
+   */
+  omit?: Prisma.ComplianceCaseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceCaseInclude<ExtArgs> | null
+  where?: Prisma.ComplianceCaseWhereInput
+  orderBy?: Prisma.ComplianceCaseOrderByWithRelationInput | Prisma.ComplianceCaseOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceCaseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceCaseScalarFieldEnum | Prisma.ComplianceCaseScalarFieldEnum[]
+}
+
+/**
  * Asset without action
  */
 export type AssetDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1322,4 +1930,8 @@ export type AssetDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Asset
    */
   omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
 }

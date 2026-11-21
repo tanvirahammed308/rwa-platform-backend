@@ -31,8 +31,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Assets
- * const assets = await prisma.asset.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,12 +42,37 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
  * Model Asset
  * 
  */
 export type Asset = Prisma.AssetModel
 /**
- * Model User
+ * Model AuditLog
  * 
  */
-export type User = Prisma.UserModel
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model ComplianceCase
+ * 
+ */
+export type ComplianceCase = Prisma.ComplianceCaseModel
+/**
+ * Model ComplianceAuditLog
+ * 
+ */
+export type ComplianceAuditLog = Prisma.ComplianceAuditLogModel
+/**
+ * Model ComplianceDocument
+ * 
+ */
+export type ComplianceDocument = Prisma.ComplianceDocumentModel
+/**
+ * Model ComplianceDocumentAuditLog
+ * 
+ */
+export type ComplianceDocumentAuditLog = Prisma.ComplianceDocumentAuditLogModel

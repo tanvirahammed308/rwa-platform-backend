@@ -1,11 +1,34 @@
-
 generator client {
   provider = "prisma-client"
-   output   = "../src/generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("ISSUER")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  assets    Asset[]
+  auditLogs AuditLog[]
+
+  submittedComplianceCases ComplianceCase[] @relation("ComplianceSubmittedBy")
+  reviewedComplianceCases  ComplianceCase[] @relation("ComplianceReviewedBy")
+
+  complianceAuditLogs ComplianceAuditLog[]
+
+  uploadedComplianceDocuments ComplianceDocument[] @relation("DocumentUploadedBy")
+
+  reviewedComplianceDocuments ComplianceDocument[] @relation("DocumentReviewedBy")
+
+  documentAuditLogs ComplianceDocumentAuditLog[]
 }
 
 model Asset {
@@ -18,16 +41,125 @@ model Asset {
   status      String   @default("DRAFT")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  ownerId         String?
+  owner           User?            @relation(fields: [ownerId], references: [id])
+  auditLogs       AuditLog[]
+  archivedAt      DateTime?
+  complianceCases ComplianceCase[]
 }
 
+model AuditLog {
+  id        String   @id @default(cuid())
+  assetId   String
+  userId    String
+  action    String
+  oldStatus String
+  newStatus String
+  changes   Json?
+  createdAt DateTime @default(now())
 
-model User {
-  id           String   @id @default(cuid())
-  name         String
-  email        String   @unique
-  passwordHash String
-  role         String   @default("ISSUER")
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  asset Asset @relation(fields: [assetId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@index([assetId, createdAt])
+  @@index([userId])
 }
 
+model ComplianceCase {
+  id String @id @default(cuid())
+
+  assetId       String
+  submittedById String
+  reviewerId    String?
+
+  status      String  @default("PENDING")
+  reason      String?
+  reviewNotes String?
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  reviewedAt DateTime?
+
+  asset       Asset @relation(fields: [assetId], references: [id])
+  submittedBy User  @relation("ComplianceSubmittedBy", fields: [submittedById], references: [id])
+  reviewer    User? @relation("ComplianceReviewedBy", fields: [reviewerId], references: [id])
+
+  auditLogs ComplianceAuditLog[]
+
+  documents ComplianceDocument[]
+
+  @@index([assetId, status])
+  @@index([submittedById])
+  @@index([reviewerId])
+  @@index([status, createdAt])
+}
+
+model ComplianceAuditLog {
+  id               String @id @default(cuid())
+  complianceCaseId String
+  userId           String
+
+  action      String
+  oldStatus   String
+  newStatus   String
+  reviewNotes String?
+
+  createdAt DateTime @default(now())
+
+  complianceCase ComplianceCase @relation(fields: [complianceCaseId], references: [id])
+  user           User           @relation(fields: [userId], references: [id])
+
+  @@index([complianceCaseId, createdAt])
+  @@index([userId])
+}
+
+model ComplianceDocument {
+  id               String  @id @default(cuid())
+  complianceCaseId String
+  uploadedById     String
+  reviewerId       String?
+
+  documentType String
+  fileName     String
+  fileUrl      String
+  mimeType     String?
+  fileSize     Int?
+
+  status      String  @default("PENDING")
+  reviewNotes String?
+
+  reviewedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  complianceCase ComplianceCase @relation(fields: [complianceCaseId], references: [id])
+  uploadedBy     User           @relation("DocumentUploadedBy", fields: [uploadedById], references: [id])
+  reviewer       User?          @relation("DocumentReviewedBy", fields: [reviewerId], references: [id])
+
+  auditLogs ComplianceDocumentAuditLog[]
+
+  @@index([complianceCaseId])
+  @@index([uploadedById])
+  @@index([reviewerId])
+  @@index([status])
+}
+
+model ComplianceDocumentAuditLog {
+  id         String @id @default(cuid())
+  documentId String
+  userId     String
+
+  action      String
+  oldStatus   String
+  newStatus   String
+  reviewNotes String?
+
+  createdAt DateTime @default(now())
+
+  document ComplianceDocument @relation(fields: [documentId], references: [id])
+  user     User               @relation(fields: [userId], references: [id])
+
+  @@index([documentId, createdAt])
+  @@index([userId])
+}

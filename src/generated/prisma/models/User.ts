@@ -198,6 +198,14 @@ export type UserWhereInput = {
   role?: Prisma.StringFilter<"User"> | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  assets?: Prisma.AssetListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  submittedComplianceCases?: Prisma.ComplianceCaseListRelationFilter
+  reviewedComplianceCases?: Prisma.ComplianceCaseListRelationFilter
+  complianceAuditLogs?: Prisma.ComplianceAuditLogListRelationFilter
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentListRelationFilter
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentListRelationFilter
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -208,6 +216,14 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  assets?: Prisma.AssetOrderByRelationAggregateInput
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  submittedComplianceCases?: Prisma.ComplianceCaseOrderByRelationAggregateInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseOrderByRelationAggregateInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogOrderByRelationAggregateInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentOrderByRelationAggregateInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentOrderByRelationAggregateInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -221,6 +237,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.StringFilter<"User"> | string
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  assets?: Prisma.AssetListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  submittedComplianceCases?: Prisma.ComplianceCaseListRelationFilter
+  reviewedComplianceCases?: Prisma.ComplianceCaseListRelationFilter
+  complianceAuditLogs?: Prisma.ComplianceAuditLogListRelationFilter
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentListRelationFilter
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentListRelationFilter
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -257,6 +281,14 @@ export type UserCreateInput = {
   role?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -267,6 +299,14 @@ export type UserUncheckedCreateInput = {
   role?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -277,6 +317,14 @@ export type UserUpdateInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -287,6 +335,14 @@ export type UserUncheckedUpdateInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -349,6 +405,906 @@ export type UserMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type UserCreateNestedOneWithoutAssetsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssetsInput, Prisma.UserUncheckedCreateWithoutAssetsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssetsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAssetsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssetsInput, Prisma.UserUncheckedCreateWithoutAssetsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssetsInput
+  upsert?: Prisma.UserUpsertWithoutAssetsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAssetsInput, Prisma.UserUpdateWithoutAssetsInput>, Prisma.UserUncheckedUpdateWithoutAssetsInput>
+}
+
+export type UserCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAuditLogsInput, Prisma.UserUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAuditLogsInput, Prisma.UserUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.UserUpsertWithoutAuditLogsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.UserUpdateWithoutAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type UserCreateNestedOneWithoutSubmittedComplianceCasesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSubmittedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutSubmittedComplianceCasesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSubmittedComplianceCasesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutReviewedComplianceCasesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceCasesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewedComplianceCasesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSubmittedComplianceCasesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSubmittedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutSubmittedComplianceCasesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSubmittedComplianceCasesInput
+  upsert?: Prisma.UserUpsertWithoutSubmittedComplianceCasesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSubmittedComplianceCasesInput, Prisma.UserUpdateWithoutSubmittedComplianceCasesInput>, Prisma.UserUncheckedUpdateWithoutSubmittedComplianceCasesInput>
+}
+
+export type UserUpdateOneWithoutReviewedComplianceCasesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceCasesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewedComplianceCasesInput
+  upsert?: Prisma.UserUpsertWithoutReviewedComplianceCasesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewedComplianceCasesInput, Prisma.UserUpdateWithoutReviewedComplianceCasesInput>, Prisma.UserUncheckedUpdateWithoutReviewedComplianceCasesInput>
+}
+
+export type UserCreateNestedOneWithoutComplianceAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutComplianceAuditLogsInput, Prisma.UserUncheckedCreateWithoutComplianceAuditLogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutComplianceAuditLogsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutComplianceAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutComplianceAuditLogsInput, Prisma.UserUncheckedCreateWithoutComplianceAuditLogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutComplianceAuditLogsInput
+  upsert?: Prisma.UserUpsertWithoutComplianceAuditLogsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutComplianceAuditLogsInput, Prisma.UserUpdateWithoutComplianceAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutComplianceAuditLogsInput>
+}
+
+export type UserCreateNestedOneWithoutUploadedComplianceDocumentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUploadedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutUploadedComplianceDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUploadedComplianceDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutReviewedComplianceDocumentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewedComplianceDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUploadedComplianceDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUploadedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutUploadedComplianceDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUploadedComplianceDocumentsInput
+  upsert?: Prisma.UserUpsertWithoutUploadedComplianceDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUploadedComplianceDocumentsInput, Prisma.UserUpdateWithoutUploadedComplianceDocumentsInput>, Prisma.UserUncheckedUpdateWithoutUploadedComplianceDocumentsInput>
+}
+
+export type UserUpdateOneWithoutReviewedComplianceDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewedComplianceDocumentsInput
+  upsert?: Prisma.UserUpsertWithoutReviewedComplianceDocumentsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewedComplianceDocumentsInput, Prisma.UserUpdateWithoutReviewedComplianceDocumentsInput>, Prisma.UserUncheckedUpdateWithoutReviewedComplianceDocumentsInput>
+}
+
+export type UserCreateNestedOneWithoutDocumentAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDocumentAuditLogsInput, Prisma.UserUncheckedCreateWithoutDocumentAuditLogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDocumentAuditLogsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDocumentAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDocumentAuditLogsInput, Prisma.UserUncheckedCreateWithoutDocumentAuditLogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDocumentAuditLogsInput
+  upsert?: Prisma.UserUpsertWithoutDocumentAuditLogsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDocumentAuditLogsInput, Prisma.UserUpdateWithoutDocumentAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutDocumentAuditLogsInput>
+}
+
+export type UserCreateWithoutAssetsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAssetsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAssetsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssetsInput, Prisma.UserUncheckedCreateWithoutAssetsInput>
+}
+
+export type UserUpsertWithoutAssetsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAssetsInput, Prisma.UserUncheckedUpdateWithoutAssetsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssetsInput, Prisma.UserUncheckedCreateWithoutAssetsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAssetsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAssetsInput, Prisma.UserUncheckedUpdateWithoutAssetsInput>
+}
+
+export type UserUpdateWithoutAssetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAssetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAuditLogsInput, Prisma.UserUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type UserUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAuditLogsInput, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAuditLogsInput, Prisma.UserUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAuditLogsInput, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type UserUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSubmittedComplianceCasesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSubmittedComplianceCasesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSubmittedComplianceCasesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSubmittedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutSubmittedComplianceCasesInput>
+}
+
+export type UserCreateWithoutReviewedComplianceCasesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReviewedComplianceCasesInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReviewedComplianceCasesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceCasesInput>
+}
+
+export type UserUpsertWithoutSubmittedComplianceCasesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSubmittedComplianceCasesInput, Prisma.UserUncheckedUpdateWithoutSubmittedComplianceCasesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSubmittedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutSubmittedComplianceCasesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSubmittedComplianceCasesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSubmittedComplianceCasesInput, Prisma.UserUncheckedUpdateWithoutSubmittedComplianceCasesInput>
+}
+
+export type UserUpdateWithoutSubmittedComplianceCasesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSubmittedComplianceCasesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutReviewedComplianceCasesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReviewedComplianceCasesInput, Prisma.UserUncheckedUpdateWithoutReviewedComplianceCasesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceCasesInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceCasesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReviewedComplianceCasesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReviewedComplianceCasesInput, Prisma.UserUncheckedUpdateWithoutReviewedComplianceCasesInput>
+}
+
+export type UserUpdateWithoutReviewedComplianceCasesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReviewedComplianceCasesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutComplianceAuditLogsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutComplianceAuditLogsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutComplianceAuditLogsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutComplianceAuditLogsInput, Prisma.UserUncheckedCreateWithoutComplianceAuditLogsInput>
+}
+
+export type UserUpsertWithoutComplianceAuditLogsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutComplianceAuditLogsInput, Prisma.UserUncheckedUpdateWithoutComplianceAuditLogsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutComplianceAuditLogsInput, Prisma.UserUncheckedCreateWithoutComplianceAuditLogsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutComplianceAuditLogsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutComplianceAuditLogsInput, Prisma.UserUncheckedUpdateWithoutComplianceAuditLogsInput>
+}
+
+export type UserUpdateWithoutComplianceAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutComplianceAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUploadedComplianceDocumentsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUploadedComplianceDocumentsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUploadedComplianceDocumentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUploadedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutUploadedComplianceDocumentsInput>
+}
+
+export type UserCreateWithoutReviewedComplianceDocumentsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReviewedComplianceDocumentsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReviewedComplianceDocumentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceDocumentsInput>
+}
+
+export type UserUpsertWithoutUploadedComplianceDocumentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUploadedComplianceDocumentsInput, Prisma.UserUncheckedUpdateWithoutUploadedComplianceDocumentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUploadedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutUploadedComplianceDocumentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUploadedComplianceDocumentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUploadedComplianceDocumentsInput, Prisma.UserUncheckedUpdateWithoutUploadedComplianceDocumentsInput>
+}
+
+export type UserUpdateWithoutUploadedComplianceDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUploadedComplianceDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutReviewedComplianceDocumentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReviewedComplianceDocumentsInput, Prisma.UserUncheckedUpdateWithoutReviewedComplianceDocumentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReviewedComplianceDocumentsInput, Prisma.UserUncheckedCreateWithoutReviewedComplianceDocumentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReviewedComplianceDocumentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReviewedComplianceDocumentsInput, Prisma.UserUncheckedUpdateWithoutReviewedComplianceDocumentsInput>
+}
+
+export type UserUpdateWithoutReviewedComplianceDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReviewedComplianceDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  documentAuditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDocumentAuditLogsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutDocumentAuditLogsInput = {
+  id?: string
+  name: string
+  email: string
+  passwordHash: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutOwnerInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutSubmittedByInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedCreateNestedManyWithoutReviewerInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedCreateNestedManyWithoutUserInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutDocumentAuditLogsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDocumentAuditLogsInput, Prisma.UserUncheckedCreateWithoutDocumentAuditLogsInput>
+}
+
+export type UserUpsertWithoutDocumentAuditLogsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDocumentAuditLogsInput, Prisma.UserUncheckedUpdateWithoutDocumentAuditLogsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDocumentAuditLogsInput, Prisma.UserUncheckedCreateWithoutDocumentAuditLogsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDocumentAuditLogsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDocumentAuditLogsInput, Prisma.UserUncheckedUpdateWithoutDocumentAuditLogsInput>
+}
+
+export type UserUpdateWithoutDocumentAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDocumentAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutOwnerNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  submittedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  reviewedComplianceCases?: Prisma.ComplianceCaseUncheckedUpdateManyWithoutReviewerNestedInput
+  complianceAuditLogs?: Prisma.ComplianceAuditLogUncheckedUpdateManyWithoutUserNestedInput
+  uploadedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  reviewedComplianceDocuments?: Prisma.ComplianceDocumentUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  assets: number
+  auditLogs: number
+  submittedComplianceCases: number
+  reviewedComplianceCases: number
+  complianceAuditLogs: number
+  uploadedComplianceDocuments: number
+  reviewedComplianceDocuments: number
+  documentAuditLogs: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assets?: boolean | UserCountOutputTypeCountAssetsArgs
+  auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
+  submittedComplianceCases?: boolean | UserCountOutputTypeCountSubmittedComplianceCasesArgs
+  reviewedComplianceCases?: boolean | UserCountOutputTypeCountReviewedComplianceCasesArgs
+  complianceAuditLogs?: boolean | UserCountOutputTypeCountComplianceAuditLogsArgs
+  uploadedComplianceDocuments?: boolean | UserCountOutputTypeCountUploadedComplianceDocumentsArgs
+  reviewedComplianceDocuments?: boolean | UserCountOutputTypeCountReviewedComplianceDocumentsArgs
+  documentAuditLogs?: boolean | UserCountOutputTypeCountDocumentAuditLogsArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAssetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AssetWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSubmittedComplianceCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceCaseWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReviewedComplianceCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceCaseWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountComplianceAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceAuditLogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUploadedComplianceDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceDocumentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReviewedComplianceDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceDocumentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDocumentAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplianceDocumentAuditLogWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -359,6 +1315,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  assets?: boolean | Prisma.User$assetsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  submittedComplianceCases?: boolean | Prisma.User$submittedComplianceCasesArgs<ExtArgs>
+  reviewedComplianceCases?: boolean | Prisma.User$reviewedComplianceCasesArgs<ExtArgs>
+  complianceAuditLogs?: boolean | Prisma.User$complianceAuditLogsArgs<ExtArgs>
+  uploadedComplianceDocuments?: boolean | Prisma.User$uploadedComplianceDocumentsArgs<ExtArgs>
+  reviewedComplianceDocuments?: boolean | Prisma.User$reviewedComplianceDocumentsArgs<ExtArgs>
+  documentAuditLogs?: boolean | Prisma.User$documentAuditLogsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -392,10 +1357,32 @@ export type UserSelectScalar = {
 }
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "passwordHash" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assets?: boolean | Prisma.User$assetsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  submittedComplianceCases?: boolean | Prisma.User$submittedComplianceCasesArgs<ExtArgs>
+  reviewedComplianceCases?: boolean | Prisma.User$reviewedComplianceCasesArgs<ExtArgs>
+  complianceAuditLogs?: boolean | Prisma.User$complianceAuditLogsArgs<ExtArgs>
+  uploadedComplianceDocuments?: boolean | Prisma.User$uploadedComplianceDocumentsArgs<ExtArgs>
+  reviewedComplianceDocuments?: boolean | Prisma.User$reviewedComplianceDocumentsArgs<ExtArgs>
+  documentAuditLogs?: boolean | Prisma.User$documentAuditLogsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    assets: Prisma.$AssetPayload<ExtArgs>[]
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    submittedComplianceCases: Prisma.$ComplianceCasePayload<ExtArgs>[]
+    reviewedComplianceCases: Prisma.$ComplianceCasePayload<ExtArgs>[]
+    complianceAuditLogs: Prisma.$ComplianceAuditLogPayload<ExtArgs>[]
+    uploadedComplianceDocuments: Prisma.$ComplianceDocumentPayload<ExtArgs>[]
+    reviewedComplianceDocuments: Prisma.$ComplianceDocumentPayload<ExtArgs>[]
+    documentAuditLogs: Prisma.$ComplianceDocumentAuditLogPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -798,6 +1785,14 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  assets<T extends Prisma.User$assetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditLogs<T extends Prisma.User$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  submittedComplianceCases<T extends Prisma.User$submittedComplianceCasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$submittedComplianceCasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceCasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviewedComplianceCases<T extends Prisma.User$reviewedComplianceCasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewedComplianceCasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceCasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complianceAuditLogs<T extends Prisma.User$complianceAuditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complianceAuditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceAuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  uploadedComplianceDocuments<T extends Prisma.User$uploadedComplianceDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$uploadedComplianceDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviewedComplianceDocuments<T extends Prisma.User$reviewedComplianceDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewedComplianceDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documentAuditLogs<T extends Prisma.User$documentAuditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$documentAuditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplianceDocumentAuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -851,6 +1846,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -869,6 +1868,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -886,6 +1889,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -935,6 +1942,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -982,6 +1993,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which Users to fetch.
    */
@@ -1031,6 +2046,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The data needed to create a User.
    */
   data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
@@ -1078,6 +2097,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1145,6 +2168,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1171,6 +2198,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1191,6 +2222,198 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.assets
+ */
+export type User$assetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Asset
+   */
+  select?: Prisma.AssetSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Asset
+   */
+  omit?: Prisma.AssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AssetInclude<ExtArgs> | null
+  where?: Prisma.AssetWhereInput
+  orderBy?: Prisma.AssetOrderByWithRelationInput | Prisma.AssetOrderByWithRelationInput[]
+  cursor?: Prisma.AssetWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AssetScalarFieldEnum | Prisma.AssetScalarFieldEnum[]
+}
+
+/**
+ * User.auditLogs
+ */
+export type User$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * User.submittedComplianceCases
+ */
+export type User$submittedComplianceCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceCase
+   */
+  select?: Prisma.ComplianceCaseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceCase
+   */
+  omit?: Prisma.ComplianceCaseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceCaseInclude<ExtArgs> | null
+  where?: Prisma.ComplianceCaseWhereInput
+  orderBy?: Prisma.ComplianceCaseOrderByWithRelationInput | Prisma.ComplianceCaseOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceCaseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceCaseScalarFieldEnum | Prisma.ComplianceCaseScalarFieldEnum[]
+}
+
+/**
+ * User.reviewedComplianceCases
+ */
+export type User$reviewedComplianceCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceCase
+   */
+  select?: Prisma.ComplianceCaseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceCase
+   */
+  omit?: Prisma.ComplianceCaseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceCaseInclude<ExtArgs> | null
+  where?: Prisma.ComplianceCaseWhereInput
+  orderBy?: Prisma.ComplianceCaseOrderByWithRelationInput | Prisma.ComplianceCaseOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceCaseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceCaseScalarFieldEnum | Prisma.ComplianceCaseScalarFieldEnum[]
+}
+
+/**
+ * User.complianceAuditLogs
+ */
+export type User$complianceAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceAuditLog
+   */
+  select?: Prisma.ComplianceAuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceAuditLog
+   */
+  omit?: Prisma.ComplianceAuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceAuditLogInclude<ExtArgs> | null
+  where?: Prisma.ComplianceAuditLogWhereInput
+  orderBy?: Prisma.ComplianceAuditLogOrderByWithRelationInput | Prisma.ComplianceAuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceAuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceAuditLogScalarFieldEnum | Prisma.ComplianceAuditLogScalarFieldEnum[]
+}
+
+/**
+ * User.uploadedComplianceDocuments
+ */
+export type User$uploadedComplianceDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceDocument
+   */
+  select?: Prisma.ComplianceDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceDocument
+   */
+  omit?: Prisma.ComplianceDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceDocumentInclude<ExtArgs> | null
+  where?: Prisma.ComplianceDocumentWhereInput
+  orderBy?: Prisma.ComplianceDocumentOrderByWithRelationInput | Prisma.ComplianceDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceDocumentScalarFieldEnum | Prisma.ComplianceDocumentScalarFieldEnum[]
+}
+
+/**
+ * User.reviewedComplianceDocuments
+ */
+export type User$reviewedComplianceDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceDocument
+   */
+  select?: Prisma.ComplianceDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceDocument
+   */
+  omit?: Prisma.ComplianceDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceDocumentInclude<ExtArgs> | null
+  where?: Prisma.ComplianceDocumentWhereInput
+  orderBy?: Prisma.ComplianceDocumentOrderByWithRelationInput | Prisma.ComplianceDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceDocumentScalarFieldEnum | Prisma.ComplianceDocumentScalarFieldEnum[]
+}
+
+/**
+ * User.documentAuditLogs
+ */
+export type User$documentAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ComplianceDocumentAuditLog
+   */
+  select?: Prisma.ComplianceDocumentAuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ComplianceDocumentAuditLog
+   */
+  omit?: Prisma.ComplianceDocumentAuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplianceDocumentAuditLogInclude<ExtArgs> | null
+  where?: Prisma.ComplianceDocumentAuditLogWhereInput
+  orderBy?: Prisma.ComplianceDocumentAuditLogOrderByWithRelationInput | Prisma.ComplianceDocumentAuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.ComplianceDocumentAuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplianceDocumentAuditLogScalarFieldEnum | Prisma.ComplianceDocumentAuditLogScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1202,4 +2425,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

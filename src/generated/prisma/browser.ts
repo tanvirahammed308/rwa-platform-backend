@@ -18,12 +18,37 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
  * Model Asset
  * 
  */
 export type Asset = Prisma.AssetModel
 /**
- * Model User
+ * Model AuditLog
  * 
  */
-export type User = Prisma.UserModel
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model ComplianceCase
+ * 
+ */
+export type ComplianceCase = Prisma.ComplianceCaseModel
+/**
+ * Model ComplianceAuditLog
+ * 
+ */
+export type ComplianceAuditLog = Prisma.ComplianceAuditLogModel
+/**
+ * Model ComplianceDocument
+ * 
+ */
+export type ComplianceDocument = Prisma.ComplianceDocumentModel
+/**
+ * Model ComplianceDocumentAuditLog
+ * 
+ */
+export type ComplianceDocumentAuditLog = Prisma.ComplianceDocumentAuditLogModel
