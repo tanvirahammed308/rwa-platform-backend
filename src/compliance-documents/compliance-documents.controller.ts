@@ -21,8 +21,16 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 
-import { basename, extname, join, resolve } from 'path';
-import { existsSync, unlinkSync } from 'fs';
+import {
+  basename,
+  extname,
+  resolve,
+  relative,
+  isAbsolute,
+} from 'path';
+
+import { existsSync, unlinkSync, realpathSync, lstatSync } from 'fs';
+
 import { readFile } from 'fs/promises';
 
 import type { Response } from 'express';
@@ -176,6 +184,7 @@ export class ComplianceDocumentsController {
 
   
 
+
 @Get(':documentId/download')
 async downloadDocument(
   @Param('documentId') documentId: string,
@@ -189,7 +198,7 @@ async downloadDocument(
       req.user.role,
     );
 
-  // Reject metadata-only documents
+  // 1. Reject metadata-only documents
   if (!document.fileUrl) {
     throw new NotFoundException(
       'No physical file is associated with this document',
@@ -199,26 +208,74 @@ async downloadDocument(
   const storedPath = document.fileUrl;
   const fileName = basename(storedPath);
 
-  // Validate the stored path
+  // 2. Validate stored path
   if (
     !storedPath.startsWith('/uploads/') ||
     storedPath.includes('\\') ||
     !fileName ||
-    storedPath !== `/uploads/${fileName}`
+    storedPath !== `/uploads/${fileName}` ||
+    fileName === '.' ||
+    fileName === '..'
   ) {
     throw new BadRequestException('Invalid document file path');
   }
 
-  // Resolve the file inside uploads directory
+  // 3. Resolve uploads directory and file path
   const uploadsDirectory = resolve(process.cwd(), 'uploads');
   const filePath = resolve(uploadsDirectory, fileName);
 
-  if (!existsSync(filePath)) {
-    throw new NotFoundException('Physical file not found');
+  // 4. Ensure file is inside uploads directory
+  const relativePath = relative(uploadsDirectory, filePath);
+
+  if (
+    !relativePath ||
+    relativePath.startsWith('..') ||
+    isAbsolute(relativePath)
+  ) {
+    throw new BadRequestException(
+      'Access to this file path is not allowed',
+    );
   }
 
-  return res.download(filePath, document.fileName);
+// 5. Check physical file
+if (!existsSync(filePath)) {
+  throw new NotFoundException('Physical file not found');
 }
+
+// 6. Reject symbolic links
+const fileStats = lstatSync(filePath);
+
+if (fileStats.isSymbolicLink()) {
+  throw new BadRequestException(
+    'Symbolic links are not allowed',
+  );
+}
+
+// 7. Resolve the real physical paths
+const realUploadsDirectory = realpathSync(uploadsDirectory);
+const realFilePath = realpathSync(filePath);
+
+// 8. Ensure the real file stays inside uploads
+const realRelativePath = relative(
+  realUploadsDirectory,
+  realFilePath,
+);
+
+if (
+  !realRelativePath ||
+  realRelativePath.startsWith('..') ||
+  isAbsolute(realRelativePath)
+) {
+  throw new BadRequestException(
+    'Access outside uploads directory is not allowed',
+  );
+}
+
+// 9. Download file
+return res.download(realFilePath, document.fileName);
+
+}
+
 
 
 }
