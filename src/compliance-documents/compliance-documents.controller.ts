@@ -122,16 +122,25 @@ export class ComplianceDocumentsController {
       limits: {
         fileSize: 5 * 1024 * 1024,
       },
-      fileFilter: (req, file, callback) => {
-        if (file.mimetype !== 'application/pdf') {
-          return callback(
-            new BadRequestException('Only PDF files are allowed'),
-            false,
-          );
-        }
+      
+fileFilter: (req, file, callback) => {
+  const extension = extname(file.originalname).toLowerCase();
 
-        callback(null, true);
-      },
+  if (
+    file.mimetype !== 'application/pdf' ||
+    extension !== '.pdf'
+  ) {
+    return callback(
+      new BadRequestException(
+        'Only PDF files with .pdf extension are allowed',
+      ),
+      false,
+    );
+  }
+
+  callback(null, true);
+},
+
     }),
   )
   async uploadDocument(

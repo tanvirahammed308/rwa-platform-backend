@@ -139,6 +139,8 @@ model ComplianceDocument {
 
   auditLogs ComplianceDocumentAuditLog[]
 
+  fileHash String? @unique
+
   @@index([complianceCaseId])
   @@index([uploadedById])
   @@index([reviewerId])
