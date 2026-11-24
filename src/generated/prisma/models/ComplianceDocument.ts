@@ -49,6 +49,7 @@ export type ComplianceDocumentMinAggregateOutputType = {
   reviewedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  fileHash: string | null
 }
 
 export type ComplianceDocumentMaxAggregateOutputType = {
@@ -66,6 +67,7 @@ export type ComplianceDocumentMaxAggregateOutputType = {
   reviewedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  fileHash: string | null
 }
 
 export type ComplianceDocumentCountAggregateOutputType = {
@@ -83,6 +85,7 @@ export type ComplianceDocumentCountAggregateOutputType = {
   reviewedAt: number
   createdAt: number
   updatedAt: number
+  fileHash: number
   _all: number
 }
 
@@ -110,6 +113,7 @@ export type ComplianceDocumentMinAggregateInputType = {
   reviewedAt?: true
   createdAt?: true
   updatedAt?: true
+  fileHash?: true
 }
 
 export type ComplianceDocumentMaxAggregateInputType = {
@@ -127,6 +131,7 @@ export type ComplianceDocumentMaxAggregateInputType = {
   reviewedAt?: true
   createdAt?: true
   updatedAt?: true
+  fileHash?: true
 }
 
 export type ComplianceDocumentCountAggregateInputType = {
@@ -144,6 +149,7 @@ export type ComplianceDocumentCountAggregateInputType = {
   reviewedAt?: true
   createdAt?: true
   updatedAt?: true
+  fileHash?: true
   _all?: true
 }
 
@@ -248,6 +254,7 @@ export type ComplianceDocumentGroupByOutputType = {
   reviewedAt: Date | null
   createdAt: Date
   updatedAt: Date
+  fileHash: string | null
   _count: ComplianceDocumentCountAggregateOutputType | null
   _avg: ComplianceDocumentAvgAggregateOutputType | null
   _sum: ComplianceDocumentSumAggregateOutputType | null
@@ -288,6 +295,7 @@ export type ComplianceDocumentWhereInput = {
   reviewedAt?: Prisma.DateTimeNullableFilter<"ComplianceDocument"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"ComplianceDocument"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ComplianceDocument"> | Date | string
+  fileHash?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
   complianceCase?: Prisma.XOR<Prisma.ComplianceCaseScalarRelationFilter, Prisma.ComplianceCaseWhereInput>
   uploadedBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   reviewer?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -309,6 +317,7 @@ export type ComplianceDocumentOrderByWithRelationInput = {
   reviewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  fileHash?: Prisma.SortOrderInput | Prisma.SortOrder
   complianceCase?: Prisma.ComplianceCaseOrderByWithRelationInput
   uploadedBy?: Prisma.UserOrderByWithRelationInput
   reviewer?: Prisma.UserOrderByWithRelationInput
@@ -317,6 +326,7 @@ export type ComplianceDocumentOrderByWithRelationInput = {
 
 export type ComplianceDocumentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  fileHash?: string
   AND?: Prisma.ComplianceDocumentWhereInput | Prisma.ComplianceDocumentWhereInput[]
   OR?: Prisma.ComplianceDocumentWhereInput[]
   NOT?: Prisma.ComplianceDocumentWhereInput | Prisma.ComplianceDocumentWhereInput[]
@@ -337,7 +347,7 @@ export type ComplianceDocumentWhereUniqueInput = Prisma.AtLeast<{
   uploadedBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   reviewer?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogListRelationFilter
-}, "id">
+}, "id" | "fileHash">
 
 export type ComplianceDocumentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -354,6 +364,7 @@ export type ComplianceDocumentOrderByWithAggregationInput = {
   reviewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  fileHash?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ComplianceDocumentCountOrderByAggregateInput
   _avg?: Prisma.ComplianceDocumentAvgOrderByAggregateInput
   _max?: Prisma.ComplianceDocumentMaxOrderByAggregateInput
@@ -379,6 +390,7 @@ export type ComplianceDocumentScalarWhereWithAggregatesInput = {
   reviewedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ComplianceDocument"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ComplianceDocument"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ComplianceDocument"> | Date | string
+  fileHash?: Prisma.StringNullableWithAggregatesFilter<"ComplianceDocument"> | string | null
 }
 
 export type ComplianceDocumentCreateInput = {
@@ -393,6 +405,7 @@ export type ComplianceDocumentCreateInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   complianceCase: Prisma.ComplianceCaseCreateNestedOneWithoutDocumentsInput
   uploadedBy: Prisma.UserCreateNestedOneWithoutUploadedComplianceDocumentsInput
   reviewer?: Prisma.UserCreateNestedOneWithoutReviewedComplianceDocumentsInput
@@ -414,6 +427,7 @@ export type ComplianceDocumentUncheckedCreateInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutDocumentInput
 }
 
@@ -429,6 +443,7 @@ export type ComplianceDocumentUpdateInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   complianceCase?: Prisma.ComplianceCaseUpdateOneRequiredWithoutDocumentsNestedInput
   uploadedBy?: Prisma.UserUpdateOneRequiredWithoutUploadedComplianceDocumentsNestedInput
   reviewer?: Prisma.UserUpdateOneWithoutReviewedComplianceDocumentsNestedInput
@@ -450,6 +465,7 @@ export type ComplianceDocumentUncheckedUpdateInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
@@ -468,6 +484,7 @@ export type ComplianceDocumentCreateManyInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
 }
 
 export type ComplianceDocumentUpdateManyMutationInput = {
@@ -482,6 +499,7 @@ export type ComplianceDocumentUpdateManyMutationInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComplianceDocumentUncheckedUpdateManyInput = {
@@ -499,6 +517,7 @@ export type ComplianceDocumentUncheckedUpdateManyInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComplianceDocumentListRelationFilter = {
@@ -526,6 +545,7 @@ export type ComplianceDocumentCountOrderByAggregateInput = {
   reviewedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  fileHash?: Prisma.SortOrder
 }
 
 export type ComplianceDocumentAvgOrderByAggregateInput = {
@@ -547,6 +567,7 @@ export type ComplianceDocumentMaxOrderByAggregateInput = {
   reviewedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  fileHash?: Prisma.SortOrder
 }
 
 export type ComplianceDocumentMinOrderByAggregateInput = {
@@ -564,6 +585,7 @@ export type ComplianceDocumentMinOrderByAggregateInput = {
   reviewedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  fileHash?: Prisma.SortOrder
 }
 
 export type ComplianceDocumentSumOrderByAggregateInput = {
@@ -735,6 +757,7 @@ export type ComplianceDocumentCreateWithoutUploadedByInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   complianceCase: Prisma.ComplianceCaseCreateNestedOneWithoutDocumentsInput
   reviewer?: Prisma.UserCreateNestedOneWithoutReviewedComplianceDocumentsInput
   auditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutDocumentInput
@@ -754,6 +777,7 @@ export type ComplianceDocumentUncheckedCreateWithoutUploadedByInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutDocumentInput
 }
 
@@ -779,6 +803,7 @@ export type ComplianceDocumentCreateWithoutReviewerInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   complianceCase: Prisma.ComplianceCaseCreateNestedOneWithoutDocumentsInput
   uploadedBy: Prisma.UserCreateNestedOneWithoutUploadedComplianceDocumentsInput
   auditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutDocumentInput
@@ -798,6 +823,7 @@ export type ComplianceDocumentUncheckedCreateWithoutReviewerInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutDocumentInput
 }
 
@@ -845,6 +871,7 @@ export type ComplianceDocumentScalarWhereInput = {
   reviewedAt?: Prisma.DateTimeNullableFilter<"ComplianceDocument"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"ComplianceDocument"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ComplianceDocument"> | Date | string
+  fileHash?: Prisma.StringNullableFilter<"ComplianceDocument"> | string | null
 }
 
 export type ComplianceDocumentUpsertWithWhereUniqueWithoutReviewerInput = {
@@ -875,6 +902,7 @@ export type ComplianceDocumentCreateWithoutComplianceCaseInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   uploadedBy: Prisma.UserCreateNestedOneWithoutUploadedComplianceDocumentsInput
   reviewer?: Prisma.UserCreateNestedOneWithoutReviewedComplianceDocumentsInput
   auditLogs?: Prisma.ComplianceDocumentAuditLogCreateNestedManyWithoutDocumentInput
@@ -894,6 +922,7 @@ export type ComplianceDocumentUncheckedCreateWithoutComplianceCaseInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedCreateNestedManyWithoutDocumentInput
 }
 
@@ -935,6 +964,7 @@ export type ComplianceDocumentCreateWithoutAuditLogsInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
   complianceCase: Prisma.ComplianceCaseCreateNestedOneWithoutDocumentsInput
   uploadedBy: Prisma.UserCreateNestedOneWithoutUploadedComplianceDocumentsInput
   reviewer?: Prisma.UserCreateNestedOneWithoutReviewedComplianceDocumentsInput
@@ -955,6 +985,7 @@ export type ComplianceDocumentUncheckedCreateWithoutAuditLogsInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
 }
 
 export type ComplianceDocumentCreateOrConnectWithoutAuditLogsInput = {
@@ -985,6 +1016,7 @@ export type ComplianceDocumentUpdateWithoutAuditLogsInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   complianceCase?: Prisma.ComplianceCaseUpdateOneRequiredWithoutDocumentsNestedInput
   uploadedBy?: Prisma.UserUpdateOneRequiredWithoutUploadedComplianceDocumentsNestedInput
   reviewer?: Prisma.UserUpdateOneWithoutReviewedComplianceDocumentsNestedInput
@@ -1005,6 +1037,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutAuditLogsInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComplianceDocumentCreateManyUploadedByInput = {
@@ -1021,6 +1054,7 @@ export type ComplianceDocumentCreateManyUploadedByInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
 }
 
 export type ComplianceDocumentCreateManyReviewerInput = {
@@ -1037,6 +1071,7 @@ export type ComplianceDocumentCreateManyReviewerInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
 }
 
 export type ComplianceDocumentUpdateWithoutUploadedByInput = {
@@ -1051,6 +1086,7 @@ export type ComplianceDocumentUpdateWithoutUploadedByInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   complianceCase?: Prisma.ComplianceCaseUpdateOneRequiredWithoutDocumentsNestedInput
   reviewer?: Prisma.UserUpdateOneWithoutReviewedComplianceDocumentsNestedInput
   auditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutDocumentNestedInput
@@ -1070,6 +1106,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutUploadedByInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
@@ -1087,6 +1124,7 @@ export type ComplianceDocumentUncheckedUpdateManyWithoutUploadedByInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComplianceDocumentUpdateWithoutReviewerInput = {
@@ -1101,6 +1139,7 @@ export type ComplianceDocumentUpdateWithoutReviewerInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   complianceCase?: Prisma.ComplianceCaseUpdateOneRequiredWithoutDocumentsNestedInput
   uploadedBy?: Prisma.UserUpdateOneRequiredWithoutUploadedComplianceDocumentsNestedInput
   auditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutDocumentNestedInput
@@ -1120,6 +1159,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutReviewerInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
@@ -1137,6 +1177,7 @@ export type ComplianceDocumentUncheckedUpdateManyWithoutReviewerInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ComplianceDocumentCreateManyComplianceCaseInput = {
@@ -1153,6 +1194,7 @@ export type ComplianceDocumentCreateManyComplianceCaseInput = {
   reviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  fileHash?: string | null
 }
 
 export type ComplianceDocumentUpdateWithoutComplianceCaseInput = {
@@ -1167,6 +1209,7 @@ export type ComplianceDocumentUpdateWithoutComplianceCaseInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   uploadedBy?: Prisma.UserUpdateOneRequiredWithoutUploadedComplianceDocumentsNestedInput
   reviewer?: Prisma.UserUpdateOneWithoutReviewedComplianceDocumentsNestedInput
   auditLogs?: Prisma.ComplianceDocumentAuditLogUpdateManyWithoutDocumentNestedInput
@@ -1186,6 +1229,7 @@ export type ComplianceDocumentUncheckedUpdateWithoutComplianceCaseInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   auditLogs?: Prisma.ComplianceDocumentAuditLogUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
@@ -1203,6 +1247,7 @@ export type ComplianceDocumentUncheckedUpdateManyWithoutComplianceCaseInput = {
   reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1251,6 +1296,7 @@ export type ComplianceDocumentSelect<ExtArgs extends runtime.Types.Extensions.In
   reviewedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  fileHash?: boolean
   complianceCase?: boolean | Prisma.ComplianceCaseDefaultArgs<ExtArgs>
   uploadedBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reviewer?: boolean | Prisma.ComplianceDocument$reviewerArgs<ExtArgs>
@@ -1273,6 +1319,7 @@ export type ComplianceDocumentSelectCreateManyAndReturn<ExtArgs extends runtime.
   reviewedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  fileHash?: boolean
   complianceCase?: boolean | Prisma.ComplianceCaseDefaultArgs<ExtArgs>
   uploadedBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reviewer?: boolean | Prisma.ComplianceDocument$reviewerArgs<ExtArgs>
@@ -1293,6 +1340,7 @@ export type ComplianceDocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.
   reviewedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  fileHash?: boolean
   complianceCase?: boolean | Prisma.ComplianceCaseDefaultArgs<ExtArgs>
   uploadedBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reviewer?: boolean | Prisma.ComplianceDocument$reviewerArgs<ExtArgs>
@@ -1313,9 +1361,10 @@ export type ComplianceDocumentSelectScalar = {
   reviewedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  fileHash?: boolean
 }
 
-export type ComplianceDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "complianceCaseId" | "uploadedById" | "reviewerId" | "documentType" | "fileName" | "fileUrl" | "mimeType" | "fileSize" | "status" | "reviewNotes" | "reviewedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["complianceDocument"]>
+export type ComplianceDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "complianceCaseId" | "uploadedById" | "reviewerId" | "documentType" | "fileName" | "fileUrl" | "mimeType" | "fileSize" | "status" | "reviewNotes" | "reviewedAt" | "createdAt" | "updatedAt" | "fileHash", ExtArgs["result"]["complianceDocument"]>
 export type ComplianceDocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   complianceCase?: boolean | Prisma.ComplianceCaseDefaultArgs<ExtArgs>
   uploadedBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1357,6 +1406,7 @@ export type $ComplianceDocumentPayload<ExtArgs extends runtime.Types.Extensions.
     reviewedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    fileHash: string | null
   }, ExtArgs["result"]["complianceDocument"]>
   composites: {}
 }
@@ -1798,6 +1848,7 @@ export interface ComplianceDocumentFieldRefs {
   readonly reviewedAt: Prisma.FieldRef<"ComplianceDocument", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"ComplianceDocument", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ComplianceDocument", 'DateTime'>
+  readonly fileHash: Prisma.FieldRef<"ComplianceDocument", 'String'>
 }
     
 

@@ -4,6 +4,7 @@ import {
   NotFoundException,
   BadRequestException,
   ForbiddenException,
+  ConflictException,
 } from '@nestjs/common';
 
 import { PrismaService } from '../prisma/prisma.service.js';
@@ -288,25 +289,32 @@ async getAuditLogs(
 
 
 
+
 async uploadFile(
   complianceCaseId: string,
   uploadedById: string,
   role: string,
   file: Express.Multer.File,
+  fileHash: string,
 ) {
   // Step 1: Check uploaded file
   if (!file) {
     throw new BadRequestException('PDF file is required');
   }
 
-  // Step 2: Check user role
+  // Step 2: Check hash
+  if (!fileHash) {
+    throw new BadRequestException('File hash is required');
+  }
+
+  // Step 3: Check user role
   if (!['ISSUER', 'ADMIN'].includes(role)) {
     throw new ForbiddenException(
       'You are not allowed to upload compliance documents',
     );
   }
 
-  // Step 3: Find compliance case
+  // Step 4: Find compliance case
   const complianceCase =
     await this.prisma.complianceCase.findUnique({
       where: { id: complianceCaseId },
@@ -316,7 +324,7 @@ async uploadFile(
     throw new NotFoundException('Compliance case not found');
   }
 
-  // Step 4: Check ISSUER ownership
+  // Step 5: Check ISSUER ownership
   if (
     role === 'ISSUER' &&
     complianceCase.submittedById !== uploadedById
@@ -326,32 +334,63 @@ async uploadFile(
     );
   }
 
-  // Step 5: Only pending cases accept documents
+  // Step 6: Only pending cases accept documents
   if (complianceCase.status !== 'PENDING') {
     throw new BadRequestException(
       'Documents can only be uploaded to pending compliance cases',
     );
   }
 
-  // Step 6: Save file metadata in database
-  const document = await this.prisma.complianceDocument.create({
-    data: {
-      complianceCaseId,
-      uploadedById,
-      documentType: 'COMPLIANCE',
-      fileName: file.originalname,
-      fileUrl: `/uploads/${file.filename}`,
-      mimeType: file.mimetype,
-      fileSize: file.size,
-    },
-  });
+  // Step 7: Check duplicate file hash
+  const existingDocument =
+    await this.prisma.complianceDocument.findUnique({
+      where: { fileHash },
+    });
 
-  // Step 7: Return response
-  return {
-    message: 'Compliance document uploaded successfully',
-    data: document,
-  };
+  if (existingDocument) {
+    throw new ConflictException(
+      'This file has already been uploaded',
+    );
+  }
+
+  // Step 8: Save file metadata and hash
+  try {
+    const document =
+      await this.prisma.complianceDocument.create({
+        data: {
+          complianceCaseId,
+          uploadedById,
+          documentType: 'COMPLIANCE',
+          fileName: file.originalname,
+          fileUrl: `/uploads/${file.filename}`,
+          mimeType: file.mimetype,
+          fileSize: file.size,
+          fileHash,
+        },
+      });
+
+    // Step 9: Return response
+    return {
+      message: 'Compliance document uploaded successfully',
+      data: document,
+    };
+  } catch (error) {
+    // Handle simultaneous duplicate uploads
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      'code' in error &&
+      error.code === 'P2002'
+    ) {
+      throw new ConflictException(
+        'This file has already been uploaded',
+      );
+    }
+
+    throw error;
+  }
 }
+
 
 
 async getDownloadInfo(

@@ -1068,7 +1068,8 @@ export const ComplianceDocumentScalarFieldEnum = {
   reviewNotes: 'reviewNotes',
   reviewedAt: 'reviewedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  fileHash: 'fileHash'
 } as const
 
 export type ComplianceDocumentScalarFieldEnum = (typeof ComplianceDocumentScalarFieldEnum)[keyof typeof ComplianceDocumentScalarFieldEnum]
