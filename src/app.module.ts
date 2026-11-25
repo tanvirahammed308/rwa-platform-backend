@@ -1,5 +1,6 @@
 
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 
 import { AppController } from './app.controller.js';
@@ -12,6 +13,11 @@ import { ComplianceDocumentsModule } from './compliance-documents/compliance-doc
 
 @Module({
   imports: [
+    // Load environment variables globally
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+
     PrismaModule,
     AssetsModule,
     AuthModule,
