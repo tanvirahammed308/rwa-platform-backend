@@ -91,7 +91,7 @@ async login(email: string, password: string) {
     message: 'Login successful',
     accessToken,
     tokenType: 'Bearer',
-    expiresIn: '15m',
+    expiresIn: '1d',
     user: {
       id: user.id,
       name: user.name,
