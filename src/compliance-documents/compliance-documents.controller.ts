@@ -276,9 +276,7 @@ export class ComplianceDocumentsController {
   // =========================================
 
   @Get(':documentId/download')
-
   @UseGuards(ThrottlerGuard)
-
   @Throttle({
     default: {
       limit: 5,
@@ -402,11 +400,20 @@ export class ComplianceDocumentsController {
       );
     }
 
-    // Step 10: Download file
+    // Step 10: Download with secure cache headers
 
     return res.download(
       realFilePath,
       document.fileName,
+      {
+        cacheControl: false,
+        headers: {
+          'Cache-Control':
+            'private, no-store, no-cache, must-revalidate',
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
+      },
     );
   }
 }
